@@ -77,6 +77,21 @@ cmake --build . -j$(nproc)
 - `yolov5_thread_pool`
 - `yolov5_stream`
 - `yolov5_stream_pool`
+- `rknn_benchmark`
+
+## RKNN 模型测速
+
+`rknn_benchmark` 只测 RKNN 输入、NPU 推理和输出获取，不包含图片解码、YOLO 后处理或画框。默认先预热 10 次，再连续测量 100 次，并输出平均延迟、P50、P95 和等效 FPS：
+
+```bash
+rknn_benchmark model.rknn
+```
+
+也可指定测量次数和预热次数：
+
+```bash
+rknn_benchmark model.rknn 200 20
+```
 
 ## PC 端流程测试
 
